@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Face to BMI
+  </title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mystyle.css') }}" />
+</head>
+
+<body class="body">
+  <div class="MY_Title">
+    <div class="box">
+      <div class="title1">
+            <span class="block1"></span>
+            <h1>Face to BMI<span></span></h1>
+        </div>
+
+        <div class="role">
+            <div class="block"></div>
+            <p>PREDICT By AI</p>
+        </div>
+    </div>
+  </div>
+  <!-- From Uiverse.io by 00Kubi -->
+  <div class="upload_container noselect" id="upload_click">
+    {% if image_url%}
+    <img src="{{ image_url }}" alt="已上传图片" id="uploadedImg" />
+    {% endif %}
+    <div class="canvas">
+      <div class="tracker tr-1"></div>
+      <div class="tracker tr-2"></div>
+      <div class="tracker tr-3"></div>
+      <div class="tracker tr-4"></div>
+      <div class="tracker tr-5"></div>
+      <div class="tracker tr-6"></div>
+      <div class="tracker tr-7"></div>
+      <div class="tracker tr-8"></div>
+      <div class="tracker tr-9"></div>
+      <div id="card">
+        <div class="card-content">
+          <div class="card-glare"></div>
+          <div class="cyber-lines">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <p id="prompt">YOUR FACE</p>
+          <div class="title">UPLOAD</div>
+          <div class="glowing-elements">
+            <div class="glow-1"></div>
+            <div class="glow-2"></div>
+            <div class="glow-3"></div>
+          </div>
+          <div class="subtitle">
+            <span>PREDICT</span>
+            <span class="highlight">YOUR BMI</span>
+          </div>
+          <div class="card-particles">
+            <span></span><span></span><span></span> <span></span><span></span><span></span>
+          </div>
+          <div class="corner-elements">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="scan-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form method="post" action="{{url_for('main.upload')}}" enctype="multipart/form-data">
+    <input type="file" id="fileInput" accept="image/*" name="image" style="display: none" />
+    <button type="submit" id="btn">上传</button>
+  </form>
+
+  <script>
+    document.getElementById("upload_click").onclick = function () {
+      document.getElementById("fileInput").click();
+    };
+  </script>
+  <div class="card_container">
+    <div class="card1"></div>
+    <div class="card2"></div>
+    <div class="card3">
+      {% if result %} {{ result }} {% endif %}
+    </div>
+  </div>
+  <script> // 根据上传的图片的比例调整容器的比例
+    window.onload = function () {
+      var img = document.getElementById("uploadedImg");
+      var container = document.getElementById("upload_click");
+      if (img && container) {
+        function resizeContainer() {
+          var maxWidth = 400;  // 最大宽度
+          var maxHeight = 400; // 最大高度
+          var imgW = img.naturalWidth;
+          var imgH = img.naturalHeight;
+          if (imgW && imgH) {
+            var ratio = imgW / imgH;
+            // 限制最大宽高，保持比例
+            if (imgW > maxWidth) {
+              imgW = maxWidth;
+              imgH = imgW / ratio;
+            }
+            if (imgH > maxHeight) {
+              imgH = maxHeight;
+              imgW = imgH * ratio;
+            }
+            container.style.width = imgW + "px";
+            container.style.height = imgH + "px";
+          }
+        }
+        img.onload = resizeContainer;
+        if (img.complete) resizeContainer();
+      }
+    };
+  </script>
+</body>
+</html>
