@@ -27,5 +27,6 @@ Thumbs.db
 *.env
 .env.*
 
-model/bmi_prediction_model/
+model/*.keras
+model/*.png
 app/static/uploads/
