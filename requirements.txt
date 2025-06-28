@@ -1,9 +1,9 @@
 Flask==3.1.1
 keras==3.10.0
-matplotlib==3.10.3
-numpy==2.3.1
+matplotlib==3.9.4
+numpy==2.0.2
 opencv_python==4.11.0.86
 pandas==2.3.0
 pyzmq==27.0.0
-scikit_learn==1.7.0
+scikit-learn==1.6.1
 tensorflow==2.19.0

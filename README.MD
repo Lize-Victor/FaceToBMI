@@ -14,7 +14,7 @@ FaceToBMI 是一个基于人脸图像预测 BMI（身体质量指数）的 Pytho
     git clone https://github.com/yourusername/FaceToBMI.git
     cd FaceToBMI
     ```
-2. 安装依赖：
+2. 安装依赖：(python>=3.9)
     ```bash
     pip install -r requirements.txt
     ```
