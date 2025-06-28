@@ -241,7 +241,7 @@ history2 = model.fit(
 
 # 加载最佳权重并保存完整模型
 model.load_weights('best_final.weights.h5')
-model.save('bmi_prediction_model_1.keras')
+model.save('bmi_prediction_model.keras')
     
 print("模型训练完成并保存为 bmi_prediction_model")
 

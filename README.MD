@@ -21,7 +21,11 @@ FaceToBMI 是一个基于人脸图像预测 BMI（身体质量指数）的 Pytho
 
 ## 使用方法
 
+
+
 ```
+cd /model
+python model_train.py
 python run.py
 ```
 
