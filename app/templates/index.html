@@ -79,7 +79,11 @@
     <div class="card1"></div>
     <div class="card2"></div>
     <div class="card3">
-      {% if result %} {{ result }} {% endif %}
+      {% if result %}
+        <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+          <span style="font-size: 2em;">{{ result }}</span>
+        </div>
+      {% endif %}
     </div>
   </div>
   <script> // 根据上传的图片的比例调整容器的比例

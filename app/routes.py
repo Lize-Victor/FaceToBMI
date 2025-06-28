@@ -29,7 +29,13 @@ def upload():
         socket.send(image_bytes)
         # 接收后端响应
         backend_response = socket.recv().decode('utf-8')
-        result = f"Image {image.filename} uploaded and sent to backend. Backend response: {backend_response}"
+        # 提取 bmi 数值
+        if 'bmi:' in backend_response:
+            bmi_str = backend_response.split('bmi:')[-1].strip()
+            backend_response = round(float(bmi_str), 2)
+        else:
+            backend_response = '后端响应异常'
+        result = f'{backend_response}'
     else:
         result = "No image uploaded."
     return render_template('index.html', result=result, image_url=image_url)

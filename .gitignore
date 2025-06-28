@@ -27,4 +27,5 @@ Thumbs.db
 *.env
 .env.*
 
-# VSCode 配
+model/bmi_prediction_model/
+app/static/uploads/
